@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "rest_framework",
     # Toys application
     "toys.apps.ToysConfig",
+    # Habilita a aplicação de drones
+    "drones.apps.DronesConfig",
 ]
 
 MIDDLEWARE = [
