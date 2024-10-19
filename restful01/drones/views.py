@@ -12,6 +12,7 @@ from rest_framework import viewsets
 from drones.filters import CompetitionFilter
 from rest_framework import permissions
 from drones import custom_permissions
+from rest_framework.authentication import TokenAuthentication
 
 
 class ApiRoot(generics.GenericAPIView):
@@ -77,12 +78,16 @@ class PilotList(generics.ListCreateAPIView):
     )
     search_fields = ("^name",)
     ordering_fields = ("name", "races_count")
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
 
 
 class PilotDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pilot.objects.all()
     serializer_class = PilotSerializer
     name = "pilot-detail"
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
 
 
 class CompetitionList(generics.ListCreateAPIView):

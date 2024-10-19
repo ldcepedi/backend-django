@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Habilita a aplicação de drones
     "drones.apps.DronesConfig",
     "django_filters",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
