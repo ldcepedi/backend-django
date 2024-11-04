@@ -13,6 +13,7 @@ from drones.filters import CompetitionFilter
 from rest_framework import permissions
 from drones import custom_permissions
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.throttling import ScopedRateThrottle
 
 
 class ApiRoot(generics.GenericAPIView):
@@ -53,6 +54,8 @@ class DroneList(generics.ListCreateAPIView):
         permissions.IsAuthenticatedOrReadOnly,
         custom_permissions.IsCurrentUserOwnerOrReadOnly,
     )
+    throttle_scope = "drones"
+    throttle_classes = (ScopedRateThrottle,)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -66,6 +69,8 @@ class DroneDetail(generics.RetrieveUpdateDestroyAPIView):
         permissions.IsAuthenticatedOrReadOnly,
         custom_permissions.IsCurrentUserOwnerOrReadOnly,
     )
+    throttle_scope = "drones"
+    throttle_classes = (ScopedRateThrottle,)
 
 
 class PilotList(generics.ListCreateAPIView):
@@ -80,6 +85,8 @@ class PilotList(generics.ListCreateAPIView):
     ordering_fields = ("name", "races_count")
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
+    throttle_scope = "pilots"
+    throttle_classes = (ScopedRateThrottle,)
 
 
 class PilotDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -88,6 +95,8 @@ class PilotDetail(generics.RetrieveUpdateDestroyAPIView):
     name = "pilot-detail"
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
+    throttle_scope = "pilots"
+    throttle_classes = (ScopedRateThrottle,)
 
 
 class CompetitionList(generics.ListCreateAPIView):
