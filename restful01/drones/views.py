@@ -35,6 +35,7 @@ class DroneCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = DroneCategorySerializer
     search_fields = ("^name",)
     ordering_fields = ("name",)
+    filterset_fields = ("name",)
 
 
 class DroneList(generics.ListCreateAPIView):
