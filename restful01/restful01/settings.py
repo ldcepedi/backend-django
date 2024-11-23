@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django_filters",
     "rest_framework.authtoken",
     "drf_spectacular",
+    "homepage",
 ]
 
 MIDDLEWARE = [
@@ -170,3 +171,6 @@ SPECTACULAR_SETTINGS = {
         "persistAuthorization": True,  # Mantém a autorização no Swagger UI durante as requisições
     },
 }
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

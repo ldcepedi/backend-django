@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Drones</title>
+    <!-- Endereço CDN do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            height: 100%;
+            max-width: 300px; /* Largura fixa dos cards */
+            margin: auto; /* Centraliza o card na coluna */
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <header class="text-center mb-4">
+            <h1>Trilha 7 - Desenvolvimento Back-End Python</h1>
+            <p class="lead">Drones Cadastrados</p>
+        </header>
+        <div class="row justify-content-center">
+            {% for drone in drones %}
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="card">
+                        {% if drone.picture %}
+                            <img src="{{ drone.picture.url }}" class="card-img-top" alt="Imagem do Drone">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300x200?text=Sem+Imagem" class="card-img-top" alt="Imagem Padrão">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ drone.name }}</h5>
+                            <p class="card-text"><strong>Categoria:</strong> {{ drone.drone_category.name }}</p>
+                            <p class="card-text"><strong>Data de Fabricação:</strong> {{ drone.manufacturing_date|date:"d/m/Y" }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Script CDN do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"</script>
+</body>
+</html>
