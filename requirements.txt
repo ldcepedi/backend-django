@@ -6,3 +6,6 @@ typing_extensions==4.12.2
 django-filter==24.3
 drf-spectacular==0.27.2
 pillow==11.0.0
+gunicorn==23.0.0
+whitenoise==6.8.2
+psycopg2-binary==2.9.10
