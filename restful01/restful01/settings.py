@@ -93,7 +93,7 @@ DATABASES = {
         "NAME": "koyebdb",
         "USER": "koyeb-adm",
         "PASSWORD": os.environ.get("POSTGRESQL_PASS"),
-        "HOST": "ep-restless-boat-a2nzw6i1.eu-central-1.pg.koyeb.app",
+        "HOST": "ep-polished-hall-a2v6sqsw.eu-central-1.pg.koyeb.app",
         "OPTIONS": {"sslmode": "require"},
     }
 }
