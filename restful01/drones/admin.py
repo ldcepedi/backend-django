@@ -18,7 +18,7 @@ class DroneAdmin(admin.ModelAdmin):
     list_editable = ("is_published", "drone_category")
     search_fields = ("name", "drone_category__name", "owner__username")
     list_filter = ("drone_category", "has_it_competed", "is_published", "owner")
-    readonly_fields = ("owner",)
+    # readonly_fields = ("owner",)
     save_on_top = True
 
     def display_picture(self, obj):
